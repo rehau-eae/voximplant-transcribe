@@ -1,0 +1,48 @@
+{
+  "DateTime": "2022-10-30T11:30:00Z",
+  "ExternalPhone": "+79099098899",
+  "InternalPhone": "+78008000101",
+  "OperatorID": "01",
+  "ConversationRecord": "https:/sample.org/conversation/123456",
+  "Dialog": [
+    {
+      "Time": "11:30:02Z",
+      "Side": "A",
+      "Text": "Здравствуйте, а куда я позвонил"
+    },
+    {
+      "Time": "11:30:04Z",
+      "Side": "B",
+      "Text": "Добрый день, это Рехау"
+    },
+    {
+      "Time": "11:30:06Z",
+      "Side": "A",
+      "Text": "У меня претензия"
+    },
+    {
+      "Time": "11:30:08Z",
+      "Side": "B",
+      "Text": "Мы не виноваты"
+    },
+    {
+      "Time": "11:30:10Z",
+      "Side": "A",
+      "Text": "Ну если не виноваты тогда до встречи в суде"
+    },
+    {
+      "Time": "11:30:10Z",
+      "Side": "B",
+      "Text": "Да, мы готовы"
+    }
+  ],
+  "SpecialPhrases": [
+    { "SpecialGroup": "claim", "Side": "A", "Count": 1, "Phrase": "Претензия" },
+    {
+      "SpecialGroup": "prohibited for operator",
+      "Side": "B",
+      "Count": 1,
+      "Phrase": "Мы не виноваты"
+    }
+  ]
+}

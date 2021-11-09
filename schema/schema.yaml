@@ -1,0 +1,73 @@
+$schema: http://json-schema.org/draft-07/schema#
+$id: 'https://rehau-eae.org/voximplant/schema.json'
+title: 'Response Format of transcriptiom'
+description: 'Формат возвращаемых данных после транскрибации разговора'
+type: object
+properties:
+  DateTime:
+    type: string
+    format: date-time
+    description: Дата и время звонка
+  ExternalPhone:
+    type: string
+    description: Внешний телефонный номер, клиент
+  InternalPhone:
+    type: string
+    description: Внутренний телефонный номер, колл-центр
+  OperatorID:
+    type: string
+    description: ID оператора колл-центра, опционально
+  ConversationRecord:
+    type: string
+    description: Ссылка на запись аудио разговора
+  Dialog:
+    type: array
+    items:
+      $ref: '#/definitions/DialogTextItem'
+    description: Транскрибированный диалог
+  SpecialPhrases:
+    type: array
+    items:
+      $ref: '#/definitions/SpecialPhrase'
+definitions:
+  DialogTextItem:
+    type: object
+    properties:
+      Time:
+        type: string
+        format: time
+        description: Время фразы
+      Side:
+        type: string
+        enum:
+          - A
+          - B
+        description: Сторона в диалоге, A - клиент, B - оператор
+      Text:
+        type: string
+        description: Текст фразы
+  SpecialGroup:
+    type: string
+    enum:
+      - fraud
+      - claim
+      - prohibited for operator
+  SpecialPhrase:
+    type: object
+    properties:
+      SpecialGroup:
+        $ref: '#/definitions/SpecialGroup'
+        description: Специальная группа распознавания
+      Side:
+        type: string
+        enum:
+          - A
+          - B
+          - Both
+        description: Сторона, произнесшая специальный текст
+      Phrase:
+        type: string
+        description: Произнесенная фраза
+      Count:
+        type: number
+        description: Произнесенное количество раз
